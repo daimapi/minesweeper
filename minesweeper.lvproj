@@ -42,6 +42,10 @@
 			<Item Name="State.ctl" Type="VI" URL="../controls/State.ctl"/>
 		</Item>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
+		<Item Name="render.vi" Type="VI" URL="../render.vi"/>
+		<Item Name="fillnumber.vi" Type="VI" URL="../fillnumber.vi"/>
+		<Item Name="click.vi" Type="VI" URL="../click.vi"/>
+		<Item Name="uncoverspace.vi" Type="VI" URL="../uncoverspace.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Main Application" Type="EXE">
@@ -75,7 +79,7 @@
 				<Property Name="SourceCount" Type="Int">2</Property>
 				<Property Name="TgtF_fileDescription" Type="Str">Main Application</Property>
 				<Property Name="TgtF_internalName" Type="Str">Main Application</Property>
-				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2012 </Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright c 2012 </Property>
 				<Property Name="TgtF_productName" Type="Str">Main Application</Property>
 				<Property Name="TgtF_targetfileGUID" Type="Str">{A9B9C488-ADD7-40F6-AAC2-547427E5CB24}</Property>
 				<Property Name="TgtF_targetfileName" Type="Str">Main.exe</Property>
