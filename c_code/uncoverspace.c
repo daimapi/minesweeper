@@ -22,11 +22,9 @@ static int in_bounds(int z, int y, int x, int dimZ, int dimY, int dimX)
             x >= 0 && x < dimX);
 }
 
-// flood fill
+// flood-fill
 static void flood_fill(int8_t *board, int z, int y, int x, int dimZ, int dimY, int dimX)
 {
-    int dz, dy, dx;
-
     if (!in_bounds(z, y, x, dimZ, dimY, dimX))
         return;
 
@@ -38,11 +36,11 @@ static void flood_fill(int8_t *board, int z, int y, int x, int dimZ, int dimY, i
     if (board[idx] != 1)
         return;
 
-    for (dz = -1; dz <= 1; dz++)
+    for (int dz = -1; dz <= 1; dz++)
     {
-        for (dy = -1; dy <= 1; dy++)
+        for (int dy = -1; dy <= 1; dy++)
         {
-            for (dx = -1; dx <= 1; dx++)
+            for (int dx = -1; dx <= 1; dx++)
             {
                 if (dz == 0 && dy == 0 && dx == 0)
                     continue;
@@ -71,24 +69,22 @@ static void flood_fill(int8_t *board, int z, int y, int x, int dimZ, int dimY, i
 // 處理 board
 static void process_board(int8_t *board, int dimZ, int dimY, int dimX)
 {
-    int z, y, x, dz, dy, dx;
-
     // 第一階段
-    for (z = 0; z < dimZ; z++)
+    for (int z = 0; z < dimZ; z++)
     {
-        for (y = 0; y < dimY; y++)
+        for (int y = 0; y < dimY; y++)
         {
-            for (x = 0; x < dimX; x++)
+            for (int x = 0; x < dimX; x++)
             {
                 int idx = z * dimY * dimX + y * dimX + x;
 
                 if (board[idx] == 1)
                 {
-                    for (dz = -1; dz <= 1; dz++)
+                    for (int dz = -1; dz <= 1; dz++)
                     {
-                        for (dy = -1; dy <= 1; dy++)
+                        for (int dy = -1; dy <= 1; dy++)
                         {
-                            for (dx = -1; dx <= 1; dx++)
+                            for (int dx = -1; dx <= 1; dx++)
                             {
                                 if (dz == 0 && dy == 0 && dx == 0)
                                     continue;
@@ -112,11 +108,11 @@ static void process_board(int8_t *board, int dimZ, int dimY, int dimX)
     }
 
     // 第二階段 flood fill
-    for (z = 0; z < dimZ; z++)
+    for (int z = 0; z < dimZ; z++)
     {
-        for (y = 0; y < dimY; y++)
+        for (int y = 0; y < dimY; y++)
         {
-            for (x = 0; x < dimX; x++)
+            for (int x = 0; x < dimX; x++)
             {
                 int idx = z * dimY * dimX + y * dimX + x;
                 if (board[idx] == 1)
