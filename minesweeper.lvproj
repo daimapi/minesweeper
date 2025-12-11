@@ -46,6 +46,7 @@
 		<Item Name="fillnumber.vi" Type="VI" URL="../fillnumber.vi"/>
 		<Item Name="click.vi" Type="VI" URL="../click.vi"/>
 		<Item Name="uncoverspace.vi" Type="VI" URL="../uncoverspace.vi"/>
+		<Item Name="drawbg.vi" Type="VI" URL="../drawbg.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Main Application" Type="EXE">
