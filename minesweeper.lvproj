@@ -47,6 +47,8 @@
 		<Item Name="click.vi" Type="VI" URL="../click.vi"/>
 		<Item Name="uncoverspace.vi" Type="VI" URL="../uncoverspace.vi"/>
 		<Item Name="drawbg.vi" Type="VI" URL="../drawbg.vi"/>
+		<Item Name="drawwinlose.vi" Type="VI" URL="../drawwinlose.vi"/>
+		<Item Name="drawpicture.vi" Type="VI" URL="../drawpicture.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Main Application" Type="EXE">
