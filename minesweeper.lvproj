@@ -49,6 +49,9 @@
 		<Item Name="drawbg.vi" Type="VI" URL="../drawbg.vi"/>
 		<Item Name="drawwinlose.vi" Type="VI" URL="../drawwinlose.vi"/>
 		<Item Name="drawpicture.vi" Type="VI" URL="../drawpicture.vi"/>
+		<Item Name="initarray.vi" Type="VI" URL="../initarray.vi"/>
+		<Item Name="arrayrng.vi" Type="VI" URL="../arrayrng.vi"/>
+		<Item Name="manageclick.vi" Type="VI" URL="../manageclick.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Main Application" Type="EXE">
