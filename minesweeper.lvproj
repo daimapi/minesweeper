@@ -2,6 +2,7 @@
 <Project Type="Project" LVVersion="25008000">
 	<Property Name="NI.LV.All.SaveVersion" Type="Str">Editor Version</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
+	<Property Name="varPersistentID:{BCB19F40-67D1-46EE-8EFF-DD34061E6CB3}" Type="Ref">/My Computer/Type Definitions/multiplayerctl.lvlib/multiplayer</Property>
 	<Item Name="My Computer" Type="My Computer">
 		<Property Name="IOScan.Faults" Type="Str"></Property>
 		<Property Name="IOScan.NetVarPeriod" Type="UInt">100</Property>
@@ -40,6 +41,9 @@
 		<Item Name="Type Definitions" Type="Folder">
 			<Item Name="Data.ctl" Type="VI" URL="../controls/Data.ctl"/>
 			<Item Name="State.ctl" Type="VI" URL="../controls/State.ctl"/>
+			<Item Name="multi.ctl" Type="VI" URL="../multi.ctl"/>
+			<Item Name="playerstatus.ctl" Type="VI" URL="../controls/playerstatus.ctl"/>
+			<Item Name="multiplayerctl.lvlib" Type="Library" URL="../controls/multiplayerctl.lvlib"/>
 		</Item>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="render.vi" Type="VI" URL="../render.vi"/>
@@ -52,6 +56,9 @@
 		<Item Name="initarray.vi" Type="VI" URL="../initarray.vi"/>
 		<Item Name="arrayrng.vi" Type="VI" URL="../arrayrng.vi"/>
 		<Item Name="manageclick.vi" Type="VI" URL="../manageclick.vi"/>
+		<Item Name="getusercluster.vi" Type="VI" URL="../getusercluster.vi"/>
+		<Item Name="checkplayerstatus.vi" Type="VI" URL="../checkplayerstatus.vi"/>
+		<Item Name="userstatusRW.vi" Type="VI" URL="../userstatusRW.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Main Application" Type="EXE">

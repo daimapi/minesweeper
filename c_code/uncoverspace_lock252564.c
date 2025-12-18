@@ -120,18 +120,30 @@ void process_board(int8_t board[Z][Y][X])
     }
 }
 
-void uncoverall(int8_t board[Z][Y][X])
+void checkboard(int8_t board[Z][Y][X], int *win)
 {
+    *win = 1;
     for (int z = 0; z < Z; z++)
     {
         for (int y = 0; y < Y; y++)
         {
             for (int x = 0; x < X; x++)
             {
-                if (board[z][y][x] == -28)
-                    board[z][y][x] = -board[z][y][x];
-                if (board[z][y][x] == -30)
-                    board[z][y][x] = -board[z][y][x];
+                if (board[z][y][x] <= -1 && board[z][y][x] >= -27)
+                {
+                    *win = 0;
+                    return;
+                }
+                else if (board[z][y][x] <= 77 && board[z][y][x] >= 51)
+                {
+                    *win = 0;
+                    return;
+                }
+                else if (board[z][y][x] == 80)
+                {
+                    *win = 0;
+                    return;
+                }
             }
         }
     }
@@ -144,7 +156,7 @@ DLL_EXPORT void process_board_dll(int8_t board[Z][Y][X])
     process_board(board);
 }
 
-DLL_EXPORT void uncoverall_dll(int8_t board[Z][Y][X])
+DLL_EXPORT void checkboard_dll(int8_t board[Z][Y][X], int *win)
 {
-    uncoverall(board);
+    checkboard(board, win);
 }
