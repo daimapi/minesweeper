@@ -59,6 +59,7 @@
 		<Item Name="getusercluster.vi" Type="VI" URL="../getusercluster.vi"/>
 		<Item Name="checkplayerstatus.vi" Type="VI" URL="../checkplayerstatus.vi"/>
 		<Item Name="userstatusRW.vi" Type="VI" URL="../userstatusRW.vi"/>
+		<Item Name="playexplode.vi" Type="VI" URL="../playexplode.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Main Application" Type="EXE">
