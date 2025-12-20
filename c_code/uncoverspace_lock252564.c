@@ -40,6 +40,16 @@ static inline int is_flagged_mine(int8_t v)
     return (v == 78);
 }
 
+static inline int is_obstacle(int8_t v)
+{
+    return (v == 30 || v == -30);
+}
+
+static inline int is_mine(int8_t v)
+{
+    return (v == -28 || v == 28 || v == 78);
+}
+
 void flood_fill(int8_t board[Z][Y][X], int z, int y, int x)
 {
     int dz, dy, dx;
@@ -183,6 +193,7 @@ void checkcover(int8_t board[Z][Y][X], int *cover)
     }
 }
 
+/*
 void find_next_deduction(
     int8_t board[Z][Y][X],
     int *out_z,
@@ -200,7 +211,7 @@ void find_next_deduction(
             {
                 int8_t center = board[z][y][x];
 
-                /* 只對已翻開的數字格推理 */
+                // 只對已翻開的數字格推理
                 if (!is_uncovered_number(center))
                     continue;
 
@@ -242,7 +253,7 @@ void find_next_deduction(
                     }
                 }
 
-                /* 規則 1：flagged == number → 必然可按 */
+                // 規則 1：flagged == number → 必然可按
                 if (center == 28)
                 {
                     *out_action = 0;
@@ -257,7 +268,7 @@ void find_next_deduction(
                     return;
                 }
 
-                /* 規則 2：flagged + unknown == number → 必然是雷 */
+                // 規則 2：flagged + unknown == number → 必然是雷
                 if (flagged_mines + unknown_count == center - 1 && unknown_count > 0)
                 {
                     *out_z = uz;
@@ -268,12 +279,119 @@ void find_next_deduction(
                 }
                 else
                 {
-                    /* 無法推理，繼續下一格 */
+                    // 無法推理，繼續下一格
                 }
             }
         }
     }
 }
+*/
+
+void find_next_deduction(int8_t board[Z][Y][X],
+                         int *out_z,
+                         int *out_y,
+                         int *out_x,
+                         int *out_action)
+{
+    *out_action = 0;
+
+    for (int z = 0; z < Z; z++)
+        for (int y = 0; y < Y; y++)
+            for (int x = 0; x < X; x++)
+            {
+                int8_t center = board[z][y][x];
+                if (!is_uncovered_number(center))
+                    continue;
+
+                int flagged_mines = 0;
+                int unknown_count = 0;
+                int uz = 0, uy = 0, ux = 0;
+
+                for (int dz = -1; dz <= 1; dz++)
+                    for (int dy = -1; dy <= 1; dy++)
+                        for (int dx = -1; dx <= 1; dx++)
+                        {
+                            if (dz == 0 && dy == 0 && dx == 0)
+                                continue;
+
+                            int nz = z + dz, ny = y + dy, nx = x + dx;
+                            if (!in_bounds(nz, ny, nx))
+                                continue;
+
+                            int8_t v = board[nz][ny][nx];
+                            if (is_flagged_mine(v))
+                                flagged_mines++;
+                            else if (is_unknown(v) && !is_obstacle(v))
+                            {
+                                unknown_count++;
+                                uz = nz;
+                                uy = ny;
+                                ux = nx;
+                            }
+                        }
+
+                if (flagged_mines == center - 1 && unknown_count > 0)
+                {
+                    *out_z = uz;
+                    *out_y = uy;
+                    *out_x = ux;
+                    *out_action = 1;
+                    return;
+                }
+
+                if (flagged_mines + unknown_count == center - 1 && unknown_count > 0)
+                {
+                    *out_z = uz;
+                    *out_y = uy;
+                    *out_x = ux;
+                    *out_action = 3;
+                    return;
+                }
+            }
+}
+
+void count_mines_3x3x3(
+    int8_t board[Z][Y][X],
+    int cz,
+    int cy,
+    int cx,
+    int *count)
+{
+    int dz, dy, dx;
+    *count = board[cz][cy][cx];
+    if (is_obstacle(board[cz][cy][cx]))
+        return;
+    if (is_mine(board[cz][cy][cx]))
+        return;
+    if (!in_bounds(cz, cy, cx))
+        return;
+
+    for (dz = -1; dz <= 1; dz++)
+    {
+        for (dy = -1; dy <= 1; dy++)
+        {
+            for (dx = -1; dx <= 1; dx++)
+            {
+                /* 是否包含中心格，取決於你需求
+                   如果不想算自己，就打開這行 */
+                if (dz == 0 && dy == 0 && dx == 0)
+                    continue;
+
+                int nz = cz + dz;
+                int ny = cy + dy;
+                int nx = cx + dx;
+
+                if (!in_bounds(nz, ny, nx))
+                    continue;
+
+                if (is_mine(board[nz][ny][nx]))
+                    *count -= 1;
+            }
+        }
+    }
+    //*count = -1 * *count - 1;
+}
+
 // ---------------------- DLL Export ------------------------
 
 DLL_EXPORT void process_board_dll(int8_t board[Z][Y][X])
@@ -303,4 +421,13 @@ DLL_EXPORT void ai(int8_t board[Z][Y][X],
 DLL_EXPORT void checkcover_dll(int8_t board[Z][Y][X], int *cover)
 {
     checkcover(board, cover);
+}
+
+DLL_EXPORT void count333mine(int8_t board[Z][Y][X],
+                             int cz,
+                             int cy,
+                             int cx,
+                             int *count)
+{
+    count_mines_3x3x3(board, cz, cy, cx, count);
 }
