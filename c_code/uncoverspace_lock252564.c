@@ -164,6 +164,25 @@ void checkboard(int8_t board[Z][Y][X], int *win)
     }
 }
 
+void checkcover(int8_t board[Z][Y][X], int *cover)
+{
+    *cover = 1;
+    for (int z = 0; z < Z; z++)
+    {
+        for (int y = 0; y < Y; y++)
+        {
+            for (int x = 0; x < X; x++)
+            {
+                if (board[z][y][x] <= -1 && board[z][y][x] >= -30)
+                {
+                    *cover = 0;
+                    return;
+                }
+            }
+        }
+    }
+}
+
 void find_next_deduction(
     int8_t board[Z][Y][X],
     int *out_z,
@@ -224,6 +243,11 @@ void find_next_deduction(
                 }
 
                 /* 規則 1：flagged == number → 必然可按 */
+                if (center == 28)
+                {
+                    *out_action = 0;
+                    return;
+                }
                 if (flagged_mines == center - 1 && unknown_count > 0)
                 {
                     *out_z = uz;
@@ -274,4 +298,9 @@ DLL_EXPORT void ai(int8_t board[Z][Y][X],
         out_y,
         out_x,
         out_action);
+}
+
+DLL_EXPORT void checkcover_dll(int8_t board[Z][Y][X], int *cover)
+{
+    checkcover(board, cover);
 }
