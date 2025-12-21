@@ -64,6 +64,7 @@
 		<Item Name="dllpathselect.vi" Type="VI" URL="../dllpathselect.vi"/>
 		<Item Name="svinit.vi" Type="VI" URL="../svinit.vi"/>
 		<Item Name="iptest.vi" Type="VI" URL="../iptest.vi"/>
+		<Item Name="readfromsv.vi" Type="VI" URL="../readfromsv.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Main Application" Type="EXE">
