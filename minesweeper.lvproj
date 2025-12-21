@@ -53,8 +53,8 @@
 		<Item Name="drawbg.vi" Type="VI" URL="../drawbg.vi"/>
 		<Item Name="drawwinlose.vi" Type="VI" URL="../drawwinlose.vi"/>
 		<Item Name="drawpicture.vi" Type="VI" URL="../drawpicture.vi"/>
-		<Item Name="initarray.vi" Type="VI" URL="../initarray.vi"/>
 		<Item Name="arrayrng.vi" Type="VI" URL="../arrayrng.vi"/>
+		<Item Name="initarray.vi" Type="VI" URL="../initarray.vi"/>
 		<Item Name="manageclick.vi" Type="VI" URL="../manageclick.vi"/>
 		<Item Name="getusercluster.vi" Type="VI" URL="../getusercluster.vi"/>
 		<Item Name="checkplayerstatus.vi" Type="VI" URL="../checkplayerstatus.vi"/>
@@ -62,7 +62,8 @@
 		<Item Name="playexplode.vi" Type="VI" URL="../playexplode.vi"/>
 		<Item Name="rngtest.vi" Type="VI" URL="../test/rngtest.vi"/>
 		<Item Name="dllpathselect.vi" Type="VI" URL="../dllpathselect.vi"/>
-		<Item Name="hostsvinit.vi" Type="VI" URL="../hostsvinit.vi"/>
+		<Item Name="svinit.vi" Type="VI" URL="../svinit.vi"/>
+		<Item Name="iptest.vi" Type="VI" URL="../iptest.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Main Application" Type="EXE">
