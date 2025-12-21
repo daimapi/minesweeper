@@ -1,11 +1,15 @@
 sus
 
+labview ver25
+
+[github](https://github.com/daimapi/minesweeper)
+
 # TODO
  - [x] minecount bug
  - [x] 3d array ai bug (fillnum bug)
  - [x] ai mode timer continue
  - [ ] multiplayer
-   - [ ] ui zcontrol issue
+   - [x] ui zcontrol issue
    - [ ] status picture ring
  - [ ] 3x3x3 mouse preview
  - [ ] ai
